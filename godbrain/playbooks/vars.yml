@@ -1,0 +1,19 @@
+hosts:
+  rabbitmq:
+    rabbit1:
+      ip: ""
+    rabbit2:
+      ip: ""
+    rabbit3:
+      ip: ""
+
+rabbitmq:
+  heartbeat: "60"
+  message_ttl: "300"
+  cluster_ips:
+    - "{{ hosts.rabbitmq.rabbit1.ip }}"
+    - "{{ hosts.rabbitmq.rabbit2.ip }}"
+    - "{{ hosts.rabbitmq.rabbit3.ip }}"
+  port: "5672"
+  user: "{{ vault.rabbitmq.user }}"
+  password: "{{ vault.rabbitmq.password }}"

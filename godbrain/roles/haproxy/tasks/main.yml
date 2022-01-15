@@ -1,0 +1,3 @@
+- import_tasks: "hap.yml"
+  tags:
+    - haproxy

@@ -1,0 +1,25 @@
+- name: haproxy | install haproxy
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - haproxy
+    - netcat-openbsd
+
+- name: haproxy | haproxy conf
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/haproxy/{{ item }}"
+    owner: "root"
+    group: "root"
+    mode:  "0644"
+  with_items:
+    - "haproxy.cfg"
+  notify: "reload haproxy"
+
+- name: haproxy | check if started
+  systemd:
+    name: haproxy
+    state: started
+    enabled: yes
+    no_block: yes

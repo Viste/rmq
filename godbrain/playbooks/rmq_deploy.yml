@@ -1,0 +1,11 @@
+- hosts:
+  - ""
+  - ""
+  - ""
+  roles:
+    - role: "rabbitmq"
+      erlang_version:       "21"
+      rabbitmq_version:     "3.8.2-1"
+      rabbitmq_webui_enable:  !!str false
+      tags:
+        - "rmq"
